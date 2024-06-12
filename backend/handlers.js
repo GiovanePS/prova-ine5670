@@ -1,6 +1,6 @@
-import HDT_Record from './database/models/hdt_record'
-import Light_Record from './database/models/light_record'
-import SoilMoisture_Record from './database/models/soil_record'
+import HDT_Record from './database/models/hdt_record.js'
+import Light_Record from './database/models/light_record.js'
+import SoilMoisture_Record from './database/models/soil_record.js'
 
 export const handlers = {
   dht: async (req, res) => {

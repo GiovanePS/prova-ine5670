@@ -1,7 +1,7 @@
 import express from 'express'
-const bodyParser = require('body-parser')
+import  bodyParser from 'body-parser'
 const app = express()
-import router from './routes'
+import router from './routes.js'
 
 app.use(bodyParser.json())
 

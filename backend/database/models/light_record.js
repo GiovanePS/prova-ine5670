@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import sequelize from '../sequelize_module'
+import sequelize from '../sequelize_module.js'
 
 const Light_Record = sequelize.define('note', {
   id: {

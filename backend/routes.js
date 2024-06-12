@@ -1,5 +1,5 @@
 import express from 'express'
-import { handlers } from './handlers'
+import { handlers } from './handlers.js'
 
 const router = express.Router()
 
