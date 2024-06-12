@@ -12,8 +12,10 @@ function App() {
     <>
     <Helmet>
       <title>Client IOT</title>
+      <link rel="shortcut icon" href="icon.png" type="image/x-icon" />
     </Helmet>
     <div className="w-ful bg-blue-500 p-4">
+      <h1 className='text-2xl'>12/06/2024</h1>
       <div className="flex flex-col justify-center items-center bg-white min-h-screen mx-80 rounded">
         <h1 className="text-4xl mt-8 mb-4">Temperature throughout the day</h1>
         <LineChart
@@ -46,6 +48,7 @@ function App() {
             {
               data: humidityData,
               label: 'Humidity (%)',
+              color: '#fdb462'
             },
           ]}
           width={600}
@@ -64,6 +67,7 @@ function App() {
             {
               data: luminosityData,
               label: 'Luminosity (lx)',
+              color: '#4e79a7'
             },
           ]}
           width={600}
@@ -82,6 +86,7 @@ function App() {
             {
               data: soilMoistureData,
               label: 'Soil Moisture (%)',
+              color: '#9c755f'
             },
           ]}
           width={600}
