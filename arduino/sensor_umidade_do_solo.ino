@@ -1,43 +1,30 @@
 #include <ESP8266WiFi.h>
-#include <Adafruit_Sensor.h>
-#include <DHT.h>
 
 // Wi-Fi connection to Gateway
 const char* ssid = "gateway-ssid";
 const char* password = "gateway-password";
 
 // Pins
-#define DHTPIN D2          // Pin connected to the DHT11
-#define DHTTYPE DHT11      // DHT 11
-
-// DHT sensor init
-DHT dht(DHTPIN, DHTTYPE);
+#define SOIL_MOISTURE_PIN A0  // Analog pin for soil moisture sensor
 
 void setup() {
   Serial.begin(115200);
-  
-  // Initialize sensors
-  dht.begin();
   
   connectToWiFi();
 }
 
 void loop() {
-  // Read temperature and humidity from DHT11
-  float humidity = dht.readHumidity();
-  float temperature = dht.readTemperature();
+  // Read soil moisture level from YL-69
+  int soilMoistureValue = analogRead(SOIL_MOISTURE_PIN);
   
   // Print sensor values to serial
-  Serial.print("Temperature: ");
-  Serial.print(temperature);
-  Serial.print(" °C, Humidity: ");
-  Serial.println(humidity);
+  Serial.print(" lx, Soil Moisture: ");
+  Serial.println(soilMoistureValue);
   
-  // delay between readings
+  // Add delay between readings
   delay(2000);
 }
 
-// Sample code to Wi-Fi connect
 void connectToWiFi() {
   Serial.println();
   Serial.print("Connecting to ");

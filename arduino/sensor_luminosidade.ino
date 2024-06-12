@@ -1,43 +1,36 @@
 #include <ESP8266WiFi.h>
-#include <Adafruit_Sensor.h>
-#include <DHT.h>
+#include <Wire.h>
+#include <BH1750.h>
 
 // Wi-Fi connection to Gateway
 const char* ssid = "gateway-ssid";
 const char* password = "gateway-password";
 
-// Pins
-#define DHTPIN D2          // Pin connected to the DHT11
-#define DHTTYPE DHT11      // DHT 11
-
-// DHT sensor init
-DHT dht(DHTPIN, DHTTYPE);
+// BH1750 sensor init
+BH1750 lightMeter;
 
 void setup() {
   Serial.begin(115200);
   
-  // Initialize sensors
-  dht.begin();
+  // Initialize sensors and pins
+  Wire.begin(D3, D4);
+  lightMeter.begin();
   
   connectToWiFi();
 }
 
 void loop() {
-  // Read temperature and humidity from DHT11
-  float humidity = dht.readHumidity();
-  float temperature = dht.readTemperature();
+  // Read light level from BH1750
+  uint16_t lightLevel = lightMeter.readLightLevel();
   
   // Print sensor values to serial
-  Serial.print("Temperature: ");
-  Serial.print(temperature);
-  Serial.print(" °C, Humidity: ");
-  Serial.println(humidity);
+  Serial.print(" %, Light Level: ");
+  Serial.print(lightLevel);
   
-  // delay between readings
+  // Add delay between readings
   delay(2000);
 }
 
-// Sample code to Wi-Fi connect
 void connectToWiFi() {
   Serial.println();
   Serial.print("Connecting to ");
