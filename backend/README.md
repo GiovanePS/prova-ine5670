@@ -17,3 +17,8 @@ $ sudo apt install yarn
 ```
 $ yarn
 ```
+
+### To run the server:
+```
+node server.js
+```
